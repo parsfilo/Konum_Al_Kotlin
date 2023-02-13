@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Konum Al</string>
+
+    <string name="mevcut_konum">Mevcut Konum</string>
+    <string name="enlem">Enlem</string>
+    <string name="boylam">Boylam</string>
+    <string name="ulke_kodu">Ülke Kodu</string>
+    <string name="ulke_adi">Ülke Adı</string>
+    <string name="sehir">Şehir</string>
+    <string name="ilce">İlçe</string>
+    <string name="sokak">Sokak</string>
+    <string name="posta_kodu">Posta Kodu</string>
+    <string name="tam_adres">Tam Adres</string>
+
+</resources>
