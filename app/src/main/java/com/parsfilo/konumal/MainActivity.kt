@@ -47,20 +47,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     /*
-     * run task to get lastLocation and call setLocation() to perform what
+     * run task to get lastLocation and call konumLayout() to perform what
      * ever the app want's to do with the location
      */
     @SuppressLint("MissingPermission")
     private fun getLocation() {
         // check if location access is permitted by the user
-        if (checkPermissions()) {
+        if (izinKontrol()) {
             // check if the location service is enabled on the device
-            if (isLocationEnabled()) {
-                // get the last known location and execute setLocation()
+            if (konumAcikMi()) {
+                // get the last known location and execute konumLayout()
                 mFusedLocationClient.lastLocation.addOnCompleteListener(this) { task ->
                     //   val lastLoc: Location = task.result
-                    setLocation(task.result)
-                    setLocation(task.result)
+                    konumLayout(task.result)
+                    konumLayout(task.result)
                 }
             } else {
                 // request the user to turn on the location service on his device
@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
     * but feel free to do what ever you desire here
     */
     @SuppressLint("SetTextI18n")
-    private fun setLocation(lastLoc: Location) {
+    private fun konumLayout(lastLoc: Location) {
 
 
         // get the object for the default Geocoder
@@ -122,7 +122,7 @@ class MainActivity : AppCompatActivity() {
     /*
      * check if the location services are enabled on the device
      */
-    private fun isLocationEnabled(): Boolean {
+    private fun konumAcikMi(): Boolean {
         val locationManager: LocationManager =
             getSystemService(LOCATION_SERVICE) as LocationManager
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
@@ -133,7 +133,7 @@ class MainActivity : AppCompatActivity() {
     /*
      * check if the user granted the app permission to the location services
      */
-    private fun checkPermissions(): Boolean {
+    private fun izinKontrol(): Boolean {
         if (ActivityCompat.checkSelfPermission(
                 this, Manifest.permission.ACCESS_COARSE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
