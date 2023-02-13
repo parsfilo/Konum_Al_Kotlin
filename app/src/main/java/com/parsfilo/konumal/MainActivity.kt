@@ -39,11 +39,11 @@ class MainActivity : AppCompatActivity() {
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
         mainBinding.butonKonumGetir.setOnClickListener {
-            getLocation()
+            konumGetir()
         }
         // get location service
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        getLocation()
+        konumGetir()
     }
 
     /*
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
      * ever the app want's to do with the location
      */
     @SuppressLint("MissingPermission")
-    private fun getLocation() {
+    private fun konumGetir() {
         // check if location access is permitted by the user
         if (izinKontrol()) {
             // check if the location service is enabled on the device
@@ -164,7 +164,7 @@ class MainActivity : AppCompatActivity() {
     ) {
         if (requestCode == permissionId) {
             if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                getLocation()
+                konumGetir()
             }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
